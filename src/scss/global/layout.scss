@@ -76,3 +76,21 @@ body {
   justify-content: space-between;
   height: calc(100% - 80px);
 }
+.game__boss {
+  margin-top: 10px;
+}
+.game__cards {
+  display: flex;
+  justify-content: space-around;
+}
+.game__hearts {
+  display: flex;
+  justify-content: center;
+}
+
+.game__heart {
+  height: 30px;
+}
+.game__infos {
+  width: 100%;
+}
