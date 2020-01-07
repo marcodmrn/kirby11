@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
+
+.home {
+  background: url(/backgroundHome.bf508fb9.png) no-repeat center;
+  background-size: cover; }
+
+.headerHome,
+.headerGame {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px; }
+
+.headerHome__icon,
+.headerGame__icon {
+  height: 30px; }
+
+.home__content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 200px); }
+
+.home__title {
+  font-family: "Righteous", "Sans-serif";
+  font-size: 35px;
+  margin-bottom: 30px; }
+
+.home__playIcon {
+  height: 100px; }
+
+.transition {
+  background: url(/backgroundHome.bf508fb9.png) no-repeat center;
+  background-size: cover;
+  text-align: center; }
+
+.transition__picture {
+  width: 85%;
+  margin-top: 30px; }
+
+.transition__text {
+  width: 80%;
+  margin: 20px auto 0 auto;
+  font-family: "Righteous", "Sans-serif";
+  font-size: 18px;
+  line-height: 22px; }
+
+.transition__next {
+  height: 30px;
+  margin-top: 20px; }
+
+.game {
+  background: url(/bgGame1.c558fef0.png) no-repeat center;
+  background-size: cover; }
+
+.game__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(100% - 80px); }
+
+
+/*# sourceMappingURL=/styles.5c8f3eab.css.map */
