@@ -4,7 +4,7 @@ oxo.screens.loadScreen("home", function() {
     oxo.screens.loadScreen("transition", function() {
       let next = document.querySelector(".transition__next");
       next.addEventListener("click", function() {
-        oxo.screens.loadScreen("game", function() {});
+        oxo.screens.loadScreen("endLoose", function() {});
       });
     });
   });

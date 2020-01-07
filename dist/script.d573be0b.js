@@ -124,7 +124,7 @@ oxo.screens.loadScreen("home", function () {
     oxo.screens.loadScreen("transition", function () {
       var next = document.querySelector(".transition__next");
       next.addEventListener("click", function () {
-        oxo.screens.loadScreen("game", function () {});
+        oxo.screens.loadScreen("endLoose", function () {});
       });
     });
   });
@@ -157,7 +157,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59924" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

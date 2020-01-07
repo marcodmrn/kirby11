@@ -133,13 +133,17 @@ body {
   background-size: cover; }
 
 .headerHome,
-.headerGame {
+.headerGame,
+.headerEndWin,
+.headerEndLoose {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px; }
 
 .headerHome__icon,
-.headerGame__icon {
+.headerGame__icon,
+.headerEndWin__icon,
+.headerEndLoose__icon {
   height: 30px; }
 
 .home__content {
@@ -204,6 +208,41 @@ body {
 
 .game__infos {
   width: 100%; }
+
+.endWin {
+  background: url(/bgGame1.c558fef0.png) no-repeat center;
+  background-size: cover; }
+
+.endWin__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 50px); }
+
+.endWin__picture {
+  margin-bottom: 100px;
+  margin-top: 30px; }
+
+.endLoose {
+  background: url(/bgGame2.9b56528d.png) no-repeat center;
+  background-size: cover; }
+
+.endLoose__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px; }
+
+.endLoose__title {
+  font-size: 50px;
+  font-family: "Righteous", "Sans-serif"; }
+
+.endLoose__skeleton {
+  margin-top: 100px; }
+
+.endLoose__restart {
+  height: 50px;
+  margin-top: 130px; }
 
 
 /*# sourceMappingURL=/styles.5c8f3eab.css.map */
