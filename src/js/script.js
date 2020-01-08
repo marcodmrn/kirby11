@@ -94,7 +94,6 @@ oxo.screens.loadScreen("home", function() {
                 });
               }
             }
-<<<<<<< HEAD
             let divCards = document.querySelector(".game__cards");
             let cards = [
               "cailloux",
@@ -116,82 +115,50 @@ oxo.screens.loadScreen("home", function() {
               "game__boss--" + nameBoss[getRandomInt(5)]
             );
             divBoss.appendChild(boss);
-=======
-          }
 
-          let divCards = document.querySelector(".game__cards");
-          let cards = [
-            "game__card--cailloux",
-            "game__card--communisme",
-            "game__card--desintox",
-            "game__card--fakenews",
-            "game__card--judas",
-            "game__card--piegeSouris",
-            "game__card--the",
-            "game__card--vetement"
-          ];
+            //Je crée un effet de drag and drop (dropper et css a modifié)
+            (function() {
+              let dndHandler = {
+                draggedElement: null,
+                applyDragEvents: function(element) {
+                  element.game_cards = true;
+                  let dndHandler = this;
+                  element.addEventListener("dragstart", function(e) {
+                    dndHandler.draggedElement = e.target;
+                    e.dataTransfer.setData("text/plain", "");
+                  });
+                },
+                applyDropEvents: function(dropper) {
+                  dropper.addEventListener("onclick", function(e) {
+                    e.preventDefault();
+                    this.className = "dropper game_cards";
+                  });
+                  dropper.addEventListener("dragleave", function() {
+                    this.className = "game_cards";
+                  });
+                  dropper.addEventListener("drop", function(e) {
+                    let target = e.target;
+                    draggedElement = dndHandler.draggedElement;
+                    clonedElement = draggedElement.cloneNode(true);
 
-          let divBoss = document.querySelector(".game__picture");
-          let nameBoss = [
-            "game__boss--snoop",
-            "game__boss--mickey",
-            "game__boss--jesus",
-            "game__boss--elon",
-            "game__boss--panda"
-          ];
-          //Je crée un effet de drag and drop (dropper et css a modifié)
-          (function() {
-            let dndHandler = {
-              draggedElement: null,
-              applyDragEvents:function(element) {
-                element.game_cards = true;
-                let dndHandler = this;
-                element.addEventListener('dragstart', function(e) {
-                  dndHandler.draggedElement = e.target
-                  e.dataTransfer.setData('text/plain', '');
-                })
-              },
-              applyDropEvents: function(dropper) {
-                dropper.addEventListener('onclick', function(e) {
-                  e.preventDefault();
-                  this.className = 'dropper game_cards';
-                });
-                dropper.addEventListener('dragleave', function() {
-                  this.className = 'game_cards';
-                });
-                dropper.addEventListener('drop', function(e){
-                  let target = e.target;
-                  draggedElement = dndHandler.draggedElement
-                  clonedElement = draggedElement.cloneNode(true);
-                  
-                  target.className = 'game_cards';
-                  clonedElement = target.appendChild(clonedEelement);
-                  dndHandler.applyDragEvents(clonedElement);
-                  draggedElement.parentNode.removeChild(draggedElement)
-                  let elements = document.querySelectorAll('.game_cards');
-                  let elementsLen = elements.length;
-                  for (let i = 0 ; i < elementsLen; i++) {
-                    dndHandler.applyDragEvents(elements[i]);
-                  };
-                  let droppers = document.querySelectorAll('.game_boss');
-                  let droppersLen = droppers.length;
-                  for (let i =  0   ; i < droppersLen ; i++) {
-                    dndHandler.applyDragEvents(droppers[i]);
-                  };
-                })
-              }
-            }
+                    target.className = "game_cards";
+                    clonedElement = target.appendChild(clonedEelement);
+                    dndHandler.applyDragEvents(clonedElement);
+                    draggedElement.parentNode.removeChild(draggedElement);
+                    let elements = document.querySelectorAll(".game_cards");
+                    let elementsLen = elements.length;
+                    for (let i = 0; i < elementsLen; i++) {
+                      dndHandler.applyDragEvents(elements[i]);
+                    }
+                    let droppers = document.querySelectorAll(".game_boss");
+                    let droppersLen = droppers.length;
+                    for (let i = 0; i < droppersLen; i++) {
+                      dndHandler.applyDragEvents(droppers[i]);
+                    }
+                  });
+                }
+              };
             });
-          
-          
-          
-          
-          
-          //Je creer une variable aléatoire pour générer aléatoirement un boss
-          var boss = document.createElement("div");
-          boss.classList.add("game__boss", nameBoss[getRandomInt(5)]);
-          divBoss.appendChild(boss);
->>>>>>> 5a526b3496daaa10f91ae93bd633f639c06cd87d
 
             let picBoss = document.querySelector(".game__boss");
             bossCondition("mickey", "piegeSouris");
