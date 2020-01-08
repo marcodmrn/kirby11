@@ -87,30 +87,31 @@ oxo.screens.loadScreen("home", function() {
           (function() {
             let dndHandler = {
               draggedElement: null,
-              applyDragEvents: (function(element) {
+              applyDragEvents:function(element) {
                 element.game_cards = true;
-                 let dndHandler = this;
+                let dndHandler = this;
                 element.addEventListener('dragstart', function(e) {
                   dndHandler.draggedElement = e.target
-                
-              applyDragEvents: function(dropper) {
-                dropper.addEventListener('dragover', function(e) {
+                  e.dataTransfer.setData('text/plain', '');
+                })
+              },
+              applyDropEvents: function(dropper) {
+                dropper.addEventListener('onclick', function(e) {
                   e.preventDefault();
                   this.className = 'dropper game_cards';
-                  dropper.addEventListener('dragleave', function() {
-                    this.className = 'game_cards';
-                  });
-                  dropper.addEventListener('drop', function(e){
-                    let target = e.target;
-                    draggedElement = dndHandler.draggedElement
-                    clonedElement = draggedElement.cloneNode(true);
+                });
+                dropper.addEventListener('dragleave', function() {
+                  this.className = 'game_cards';
+                });
+                dropper.addEventListener('drop', function(e){
+                  let target = e.target;
+                  draggedElement = dndHandler.draggedElement
+                  clonedElement = draggedElement.cloneNode(true);
                   
                   target.className = 'game_cards';
                   clonedElement = target.appendChild(clonedEelement);
                   dndHandler.applyDragEvents(clonedElement);
                   draggedElement.parentNode.removeChild(draggedElement)
-                  })
-                  // appliquer sur toutes les cartes
                   let elements = document.querySelectorAll('.game_cards');
                   let elementsLen = elements.length;
                   for (let i = 0 ; i < elementsLen; i++) {
@@ -121,9 +122,15 @@ oxo.screens.loadScreen("home", function() {
                   for (let i =  0   ; i < droppersLen ; i++) {
                     dndHandler.applyDragEvents(droppers[i]);
                   };
-                  }
-                )};
-
+                })
+              }
+            }
+            });
+          
+          
+          
+          
+          
           //Je creer une variable aléatoire pour générer aléatoirement un boss
           var boss = document.createElement("img");
           var lienBoss = "http://localhost:1234/assets/boss/";
