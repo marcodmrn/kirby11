@@ -123,6 +123,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@keyframes move {
+  0% {
+    transform: translate(-60px, -30px); }
+  50% {
+    transform: translate(60px, 30px); }
+  100% {
+    transform: translate(-60px, -30px); } }
+
 body {
   width: 100vw;
   height: 100vh;
@@ -166,20 +174,19 @@ body {
   background-size: cover;
   text-align: center; }
 
-.transition__picture {
-  width: 85%;
-  margin-top: 30px; }
-
 .transition__text {
   width: 80%;
-  margin: 20px auto 0 auto;
+  margin: 60px auto 0 auto;
   font-family: "Righteous", "Sans-serif";
-  font-size: 18px;
-  line-height: 22px; }
+  font-size: 22px;
+  line-height: 26px; }
+
+.transition__text--2 {
+  display: none; }
 
 .transition__next {
-  height: 30px;
-  margin-top: 20px; }
+  height: 50px;
+  margin-top: 60px; }
 
 .game {
   background: url(/bgGame1.c558fef0.png) no-repeat center;
@@ -195,7 +202,8 @@ body {
 .game__boss {
   margin-top: 50px;
   width: 150px;
-  height: 150px; }
+  height: 150px;
+  animation: move 4s infinite; }
 
 .game__boss--jesus {
   background: url(/jesus.dc23d421.png) no-repeat center;
@@ -222,7 +230,7 @@ body {
   justify-content: space-around; }
 
 .game__card {
-  height: 100px;
+  height: 140px;
   width: 70px; }
 
 .game__card--cailloux {
@@ -279,6 +287,10 @@ body {
 
 .endWin__picture {
   margin-bottom: 30px; }
+
+.endWin__restart {
+  height: 50px;
+  margin-top: 20px; }
 
 .endLoose {
   background: url(/bgGame2.9b56528d.png) no-repeat center;

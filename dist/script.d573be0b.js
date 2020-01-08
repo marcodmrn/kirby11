@@ -126,73 +126,98 @@ oxo.screens.loadScreen("home", function () {
     //Je charge le screen "transition"
     oxo.screens.loadScreen("transition", function () {
       //Je sélectionne mon élément et le place dans une variable
-      var next = document.querySelector(".transition__next"); //J'écoute le click sur mon élément
+      var next = document.querySelector(".transition__next");
+      var text1 = document.querySelector(".transition__text--1");
+      var text2 = document.querySelector(".transition__text--2");
+      var counterNext = 0; //J'écoute le click sur mon élément
 
       next.addEventListener("click", function () {
-        //Je charge le screen "game"
-        oxo.screens.loadScreen("game", function () {
-          //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
-          function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max));
-          }
+        text1.remove();
+        text2.style.display = "block";
+        counterNext++;
 
-          function bossCondition($boss, $card) {
-            if (picBoss.className == "game__boss game__boss--" + $boss) {
-              //Je creer une boucle pour générer aléatoirement mes cartes
-              for (var i = 0; i < 3; i++) {
-                var card = document.createElement("div");
-                card.classList.add("game__card", cards[getRandomInt(8)]);
-                divCards.appendChild(card);
-              }
-
-              var card = document.createElement("div");
-              card.classList.add("game__card", "game__card--" + $card);
-              divCards.appendChild(card);
-              var counterLifeBoss = 0;
-              var counterLifeYou = 0;
-              var cardsDeck = document.querySelectorAll(".game__card");
-              cardsDeck.forEach(function (cardElement) {
-                cardElement.addEventListener("click", function () {
-                  var divHeartBoss = document.querySelector(".game__hearts--boss");
-                  var heartBoss = document.querySelector(".game__hearts--boss .game__heart");
-                  var divHeartYou = document.querySelector(".game__hearts--you");
-                  var heartYou = document.querySelector(".game__hearts--you .game__heart");
-
-                  if (cardElement.className == "game__card game__card--" + $card) {
-                    divHeartBoss.removeChild(heartBoss);
-                    counterLifeBoss++;
-
-                    if (counterLifeBoss === 3) {
-                      oxo.screens.loadScreen("endWin", function () {});
-                    }
-                  } else {
-                    divHeartYou.removeChild(heartYou);
-                    counterLifeYou++;
-
-                    if (counterLifeYou === 3) {
-                      oxo.screens.loadScreen("endLoose", function () {});
-                    }
-                  }
-                });
-              });
+        if (counterNext === 2) {
+          //Je charge le screen "game"
+          oxo.screens.loadScreen("game", function () {
+            //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
+            function getRandomInt(max) {
+              return Math.floor(Math.random() * Math.floor(max));
             }
-          }
 
-          var divCards = document.querySelector(".game__cards");
-          var cards = ["game__card--cailloux", "game__card--communisme", "game__card--desintox", "game__card--fakenews", "game__card--judas", "game__card--piegeSouris", "game__card--the", "game__card--vetement"];
-          var divBoss = document.querySelector(".game__picture");
-          var nameBoss = ["game__boss--snoop", "game__boss--mickey", "game__boss--jesus", "game__boss--elon", "game__boss--panda"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
+            function bossCondition($boss, $card) {
+              if (picBoss.className == "game__boss game__boss--" + $boss) {
+                //Je creer une boucle pour générer aléatoirement mes cartes
+                for (var i = 0; i < 3; i++) {
+                  var card = document.createElement("div");
+                  card.classList.add("game__card", "game__card--" + cards[getRandomInt(8)]);
 
-          var boss = document.createElement("div");
-          boss.classList.add("game__boss", nameBoss[getRandomInt(5)]);
-          divBoss.appendChild(boss);
-          var picBoss = document.querySelector(".game__boss");
-          bossCondition("mickey", "piegeSouris");
-          bossCondition("snoop", "desintox");
-          bossCondition("jesus", "judas");
-          bossCondition("panda", "the");
-          bossCondition("elon", "cailloux");
-        });
+                  if (card.classList.contains("game__card--" + $card)) {
+                    var card = document.createElement("div");
+                    card.classList.add("game__card", "game__card--" + cards[getRandomInt(8)]);
+                  }
+
+                  divCards.appendChild(card);
+                }
+
+                var card = document.createElement("div");
+                card.classList.add("game__card", "game__card--" + $card);
+                divCards.appendChild(card);
+                var counterLifeBoss = 0;
+                var counterLifeYou = 0;
+                var cardsDeck = document.querySelectorAll(".game__card");
+                cardsDeck.forEach(function (cardElement) {
+                  cardElement.addEventListener("click", function () {
+                    var divHeartBoss = document.querySelector(".game__hearts--boss");
+                    var heartBoss = document.querySelector(".game__hearts--boss .game__heart");
+                    var divHeartYou = document.querySelector(".game__hearts--you");
+                    var heartYou = document.querySelector(".game__hearts--you .game__heart");
+
+                    if (cardElement.className == "game__card game__card--" + $card) {
+                      divHeartBoss.removeChild(heartBoss);
+                      counterLifeBoss++;
+
+                      if (counterLifeBoss === 3) {
+                        oxo.screens.loadScreen("endWin", function () {
+                          var retryWin = document.querySelector(".endWin__restart");
+                          retryWin.addEventListener("click", function () {
+                            window.location.reload();
+                          });
+                        });
+                      }
+                    } else {
+                      divHeartYou.removeChild(heartYou);
+                      counterLifeYou++;
+
+                      if (counterLifeYou === 3) {
+                        oxo.screens.loadScreen("endLoose", function () {
+                          var retryLoose = document.querySelector(".endLoose__restart");
+                          retryLoose.addEventListener("click", function () {
+                            window.location.reload();
+                          });
+                        });
+                      }
+                    }
+                  });
+                });
+              }
+            }
+
+            var divCards = document.querySelector(".game__cards");
+            var cards = ["cailloux", "communisme", "desintox", "fakenews", "judas", "piegeSouris", "the", "vetement"];
+            var divBoss = document.querySelector(".game__picture");
+            var nameBoss = ["snoop", "mickey", "jesus", "elon", "panda"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
+
+            var boss = document.createElement("div");
+            boss.classList.add("game__boss", "game__boss--" + nameBoss[getRandomInt(5)]);
+            divBoss.appendChild(boss);
+            var picBoss = document.querySelector(".game__boss");
+            bossCondition("mickey", "piegeSouris");
+            bossCondition("snoop", "desintox");
+            bossCondition("jesus", "judas");
+            bossCondition("panda", "the");
+            bossCondition("elon", "cailloux");
+          });
+        }
       });
     });
   });
@@ -225,7 +250,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65044" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50387" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
