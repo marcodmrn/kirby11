@@ -119,12 +119,84 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"js/script.js":[function(require,module,exports) {
 oxo.screens.loadScreen("home", function () {
-  var play = document.querySelector(".home__playIcon");
+  //Je sélectionne mon élément et le place dans une variable
+  var play = document.querySelector(".home__playIcon"); //J'écoute le click sur mon élément
+
   play.addEventListener("click", function () {
+    //Je charge le screen "transition"
     oxo.screens.loadScreen("transition", function () {
-      var next = document.querySelector(".transition__next");
+      //Je sélectionne mon élément et le place dans une variable
+      var next = document.querySelector(".transition__next"); //J'écoute le click sur mon élément
+
       next.addEventListener("click", function () {
-        oxo.screens.loadScreen("endLoose", function () {});
+        //Je charge le screen "game"
+        oxo.screens.loadScreen("game", function () {
+          //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+          }
+
+          function bossCondition($boss, $card) {
+            if (picBoss.src == lienBoss + $boss) {
+              //Je creer une boucle pour générer aléatoirement mes cartes
+              for (var i = 0; i < 4; i++) {
+                var card = document.createElement("img");
+                var lienCard = "http://localhost:1234/assets/cards/";
+                card.classList.add("game__card");
+                card.src = lienCard + cards[getRandomInt(8)];
+                divCards.appendChild(card);
+              }
+
+              var cardMickey = lienCard + $card;
+              card.src = cardMickey;
+              divCards.appendChild(card);
+              var counterLifeBoss = 0;
+              var counterLifeYou = 0;
+              var cardsDeck = document.querySelectorAll(".game__card");
+              cardsDeck.forEach(function (cardElement) {
+                cardElement.addEventListener("click", function () {
+                  var divHeartBoss = document.querySelector(".game__hearts--boss");
+                  var heartBoss = document.querySelector(".game__hearts--boss .game__heart");
+                  var divHeartYou = document.querySelector(".game__hearts--you");
+                  var heartYou = document.querySelector(".game__hearts--you .game__heart");
+
+                  if (cardElement.src === lienCard + $card) {
+                    divHeartBoss.removeChild(heartBoss);
+                    counterLifeBoss++;
+
+                    if (counterLifeBoss === 3) {
+                      oxo.screens.loadScreen("endWin", function () {});
+                    }
+                  } else {
+                    divHeartYou.removeChild(heartYou);
+                    counterLifeYou++;
+
+                    if (counterLifeYou === 3) {
+                      oxo.screens.loadScreen("endLoose", function () {});
+                    }
+                  }
+                });
+              });
+            }
+          }
+
+          var divCards = document.querySelector(".game__cards");
+          var cards = ["cailloux.png", "communisme.png", "desintox.png", "fakenews.png", "judas.png", "piege-souris.png", "the.png", "vetement.png"];
+          var divBoss = document.querySelector(".game__picture");
+          var nameBoss = ["snoop.png", "mickey.png", "jesus.png", "elon.png", "panda.png"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
+
+          var boss = document.createElement("img");
+          var lienBoss = "http://localhost:1234/assets/boss/";
+          boss.classList.add("game__boss");
+          boss.src = lienBoss + nameBoss[getRandomInt(5)];
+          divBoss.appendChild(boss);
+          var picBoss = document.querySelector(".game__boss");
+          bossCondition("mickey.png", "piege-souris.png");
+          bossCondition("snoop.png", "desintox.png");
+          bossCondition("jesus.png", "judas.png");
+          bossCondition("panda.png", "the.png");
+          bossCondition("elon.png", "cailloux.png");
+        });
       });
     });
   });
@@ -157,7 +229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59924" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64707" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
