@@ -81,12 +81,86 @@ body {
   height: calc(100% - 80px);
 }
 .game__boss {
-  margin-top: 10px;
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
 }
+
+.game__boss--jesus {
+  background: url(../assets/boss/jesus.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__boss--snoop {
+  background: url(../assets/boss/snoop.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__boss--mickey {
+  background: url(../assets/boss/mickey.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__boss--panda {
+  background: url(../assets/boss/panda.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__boss--elon {
+  background: url(../assets/boss/elon.png) no-repeat center;
+  background-size: cover;
+}
+
 .game__cards {
   display: flex;
   justify-content: space-around;
 }
+
+.game__card {
+  height: 100px;
+  width: 70px;
+}
+
+.game__card--cailloux {
+  background: url(../assets/cards/cailloux.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--the {
+  background: url(../assets/cards/the.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--piegeSouris {
+  background: url(../assets/cards/piege-souris.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--desintox {
+  background: url(../assets/cards/desintox.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--judas {
+  background: url(../assets/cards/judas.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--vetement {
+  background: url(../assets/cards/vetement.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--fakenews {
+  background: url(../assets/cards/fakenews.png) no-repeat center;
+  background-size: cover;
+}
+
+.game__card--communisme {
+  background: url(../assets/cards/communisme.png) no-repeat center;
+  background-size: cover;
+}
+
 .game__hearts {
   display: flex;
   justify-content: center;
@@ -130,5 +204,5 @@ body {
 }
 .endLoose__restart {
   height: 50px;
-  margin-top: 10px;
+  margin-top: 130px;
 }

@@ -16,17 +16,15 @@ oxo.screens.loadScreen("home", function() {
             return Math.floor(Math.random() * Math.floor(max));
           }
           function bossCondition($boss, $card) {
-            if (picBoss.src == lienBoss + $boss) {
+            if (picBoss.className == "game__boss game__boss--" + $boss) {
               //Je creer une boucle pour générer aléatoirement mes cartes
-              for (let i = 0; i < 4; i++) {
-                var card = document.createElement("img");
-                var lienCard = "http://localhost:1234/assets/cards/";
-                card.classList.add("game__card");
-                card.src = lienCard + cards[getRandomInt(8)];
+              for (let i = 0; i < 3; i++) {
+                var card = document.createElement("div");
+                card.classList.add("game__card", cards[getRandomInt(8)]);
                 divCards.appendChild(card);
               }
-              let cardMickey = lienCard + $card;
-              card.src = cardMickey;
+              var card = document.createElement("div");
+              card.classList.add("game__card", "game__card--" + $card);
               divCards.appendChild(card);
               let counterLifeBoss = 0;
               let counterLifeYou = 0;
@@ -45,7 +43,10 @@ oxo.screens.loadScreen("home", function() {
                   let heartYou = document.querySelector(
                     ".game__hearts--you .game__heart"
                   );
-                  if (cardElement.src === lienCard + $card) {
+                  if (
+                    cardElement.className ==
+                    "game__card game__card--" + $card
+                  ) {
                     divHeartBoss.removeChild(heartBoss);
                     counterLifeBoss++;
                     if (counterLifeBoss === 3) {
@@ -65,38 +66,36 @@ oxo.screens.loadScreen("home", function() {
 
           let divCards = document.querySelector(".game__cards");
           let cards = [
-            "cailloux.png",
-            "communisme.png",
-            "desintox.png",
-            "fakenews.png",
-            "judas.png",
-            "piege-souris.png",
-            "the.png",
-            "vetement.png"
+            "game__card--cailloux",
+            "game__card--communisme",
+            "game__card--desintox",
+            "game__card--fakenews",
+            "game__card--judas",
+            "game__card--piegeSouris",
+            "game__card--the",
+            "game__card--vetement"
           ];
 
           let divBoss = document.querySelector(".game__picture");
           let nameBoss = [
-            "snoop.png",
-            "mickey.png",
-            "jesus.png",
-            "elon.png",
-            "panda.png"
+            "game__boss--snoop",
+            "game__boss--mickey",
+            "game__boss--jesus",
+            "game__boss--elon",
+            "game__boss--panda"
           ];
 
           //Je creer une variable aléatoire pour générer aléatoirement un boss
-          var boss = document.createElement("img");
-          var lienBoss = "http://localhost:1234/assets/boss/";
-          boss.classList.add("game__boss");
-          boss.src = lienBoss + nameBoss[getRandomInt(5)];
+          var boss = document.createElement("div");
+          boss.classList.add("game__boss", nameBoss[getRandomInt(5)]);
           divBoss.appendChild(boss);
 
           let picBoss = document.querySelector(".game__boss");
-          bossCondition("mickey.png", "piege-souris.png");
-          bossCondition("snoop.png", "desintox.png");
-          bossCondition("jesus.png", "judas.png");
-          bossCondition("panda.png", "the.png");
-          bossCondition("elon.png", "cailloux.png");
+          bossCondition("mickey", "piegeSouris");
+          bossCondition("snoop", "desintox");
+          bossCondition("jesus", "judas");
+          bossCondition("panda", "the");
+          bossCondition("elon", "cailloux");
         });
       });
     });

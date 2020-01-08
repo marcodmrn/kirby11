@@ -137,18 +137,16 @@ oxo.screens.loadScreen("home", function () {
           }
 
           function bossCondition($boss, $card) {
-            if (picBoss.src == lienBoss + $boss) {
+            if (picBoss.className == "game__boss game__boss--" + $boss) {
               //Je creer une boucle pour générer aléatoirement mes cartes
-              for (var i = 0; i < 4; i++) {
-                var card = document.createElement("img");
-                var lienCard = "http://localhost:1234/assets/cards/";
-                card.classList.add("game__card");
-                card.src = lienCard + cards[getRandomInt(8)];
+              for (var i = 0; i < 3; i++) {
+                var card = document.createElement("div");
+                card.classList.add("game__card", cards[getRandomInt(8)]);
                 divCards.appendChild(card);
               }
 
-              var cardMickey = lienCard + $card;
-              card.src = cardMickey;
+              var card = document.createElement("div");
+              card.classList.add("game__card", "game__card--" + $card);
               divCards.appendChild(card);
               var counterLifeBoss = 0;
               var counterLifeYou = 0;
@@ -160,7 +158,7 @@ oxo.screens.loadScreen("home", function () {
                   var divHeartYou = document.querySelector(".game__hearts--you");
                   var heartYou = document.querySelector(".game__hearts--you .game__heart");
 
-                  if (cardElement.src === lienCard + $card) {
+                  if (cardElement.className == "game__card game__card--" + $card) {
                     divHeartBoss.removeChild(heartBoss);
                     counterLifeBoss++;
 
@@ -181,21 +179,19 @@ oxo.screens.loadScreen("home", function () {
           }
 
           var divCards = document.querySelector(".game__cards");
-          var cards = ["cailloux.png", "communisme.png", "desintox.png", "fakenews.png", "judas.png", "piege-souris.png", "the.png", "vetement.png"];
+          var cards = ["game__card--cailloux", "game__card--communisme", "game__card--desintox", "game__card--fakenews", "game__card--judas", "game__card--piegeSouris", "game__card--the", "game__card--vetement"];
           var divBoss = document.querySelector(".game__picture");
-          var nameBoss = ["snoop.png", "mickey.png", "jesus.png", "elon.png", "panda.png"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
+          var nameBoss = ["game__boss--snoop", "game__boss--mickey", "game__boss--jesus", "game__boss--elon", "game__boss--panda"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
 
-          var boss = document.createElement("img");
-          var lienBoss = "http://localhost:1234/assets/boss/";
-          boss.classList.add("game__boss");
-          boss.src = lienBoss + nameBoss[getRandomInt(5)];
+          var boss = document.createElement("div");
+          boss.classList.add("game__boss", nameBoss[getRandomInt(5)]);
           divBoss.appendChild(boss);
           var picBoss = document.querySelector(".game__boss");
-          bossCondition("mickey.png", "piege-souris.png");
-          bossCondition("snoop.png", "desintox.png");
-          bossCondition("jesus.png", "judas.png");
-          bossCondition("panda.png", "the.png");
-          bossCondition("elon.png", "cailloux.png");
+          bossCondition("mickey", "piegeSouris");
+          bossCondition("snoop", "desintox");
+          bossCondition("jesus", "judas");
+          bossCondition("panda", "the");
+          bossCondition("elon", "cailloux");
         });
       });
     });
@@ -229,7 +225,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54794" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

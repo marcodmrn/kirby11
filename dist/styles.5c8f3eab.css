@@ -193,11 +193,69 @@ body {
   height: calc(100% - 80px); }
 
 .game__boss {
-  margin-top: 10px; }
+  margin-top: 50px;
+  width: 150px;
+  height: 150px; }
+
+.game__boss--jesus {
+  background: url(/jesus.dc23d421.png) no-repeat center;
+  background-size: cover; }
+
+.game__boss--snoop {
+  background: url(/snoop.01cb2a1e.png) no-repeat center;
+  background-size: cover; }
+
+.game__boss--mickey {
+  background: url(/mickey.bc44b19b.png) no-repeat center;
+  background-size: cover; }
+
+.game__boss--panda {
+  background: url(/panda.7988d9e3.png) no-repeat center;
+  background-size: cover; }
+
+.game__boss--elon {
+  background: url(/elon.fdceca14.png) no-repeat center;
+  background-size: cover; }
 
 .game__cards {
   display: flex;
   justify-content: space-around; }
+
+.game__card {
+  height: 100px;
+  width: 70px; }
+
+.game__card--cailloux {
+  background: url(/cailloux.f164df0f.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--the {
+  background: url(/the.bbcff26e.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--piegeSouris {
+  background: url(/piege-souris.9537b33a.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--desintox {
+  background: url(/desintox.c9062308.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--judas {
+  background: url(/judas.3e5663c1.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--vetement {
+  background: url(/vetement.3e887734.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--fakenews {
+  background: url(/fakenews.358f8d81.png) no-repeat center;
+  background-size: cover; }
+
+.game__card--communisme {
+  background: url(/communisme.a780ffb1.png) no-repeat center;
+  background-size: cover; }
 
 .game__hearts {
   display: flex;
@@ -241,7 +299,7 @@ body {
 
 .endLoose__restart {
   height: 50px;
-  margin-top: 10px; }
+  margin-top: 130px; }
 
 
 /*# sourceMappingURL=/styles.5c8f3eab.css.map */

@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../assets/backgroundHome.png":[["backgroundHome.bf508fb9.png","assets/backgroundHome.png"],"assets/backgroundHome.png"],"./../assets/bgGame1.png":[["bgGame1.c558fef0.png","assets/bgGame1.png"],"assets/bgGame1.png"],"./../assets/bgGame2.png":[["bgGame2.9b56528d.png","assets/bgGame2.png"],"assets/bgGame2.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./../assets/backgroundHome.png":[["backgroundHome.bf508fb9.png","assets/backgroundHome.png"],"assets/backgroundHome.png"],"./../assets/bgGame1.png":[["bgGame1.c558fef0.png","assets/bgGame1.png"],"assets/bgGame1.png"],"./../assets/boss/jesus.png":[["jesus.dc23d421.png","assets/boss/jesus.png"],"assets/boss/jesus.png"],"./../assets/boss/snoop.png":[["snoop.01cb2a1e.png","assets/boss/snoop.png"],"assets/boss/snoop.png"],"./../assets/boss/mickey.png":[["mickey.bc44b19b.png","assets/boss/mickey.png"],"assets/boss/mickey.png"],"./../assets/boss/panda.png":[["panda.7988d9e3.png","assets/boss/panda.png"],"assets/boss/panda.png"],"./../assets/boss/elon.png":[["elon.fdceca14.png","assets/boss/elon.png"],"assets/boss/elon.png"],"./../assets/cards/cailloux.png":[["cailloux.f164df0f.png","assets/cards/cailloux.png"],"assets/cards/cailloux.png"],"./../assets/cards/the.png":[["the.bbcff26e.png","assets/cards/the.png"],"assets/cards/the.png"],"./../assets/cards/piege-souris.png":[["piege-souris.9537b33a.png","assets/cards/piege-souris.png"],"assets/cards/piege-souris.png"],"./../assets/cards/desintox.png":[["desintox.c9062308.png","assets/cards/desintox.png"],"assets/cards/desintox.png"],"./../assets/cards/judas.png":[["judas.3e5663c1.png","assets/cards/judas.png"],"assets/cards/judas.png"],"./../assets/cards/vetement.png":[["vetement.3e887734.png","assets/cards/vetement.png"],"assets/cards/vetement.png"],"./../assets/cards/fakenews.png":[["fakenews.358f8d81.png","assets/cards/fakenews.png"],"assets/cards/fakenews.png"],"./../assets/cards/communisme.png":[["communisme.a780ffb1.png","assets/cards/communisme.png"],"assets/cards/communisme.png"],"./../assets/bgGame2.png":[["bgGame2.9b56528d.png","assets/bgGame2.png"],"assets/bgGame2.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54794" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
