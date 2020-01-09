@@ -1,10 +1,13 @@
 <header class="headerGame">
-  <img class="headerGame__icon" src="/info.8b3774be.svg" alt="Bouton parametres">
-  <img class="headerGame__icon" src="/icon-sound.6945a874.svg" alt="Bouton son">
+  <img class="headerGame__icon" src="/settings.48c31e20.svg" alt="Bouton parametres">
+  <audio src="/audio.990ac290.mp3" autoplay="true" loop="true"> 
+  </audio><img class="headerGame__icon" src="/icon-sound.6945a874.svg" alt="Bouton son">
+  <audio src="/lvlup.82cc5306.mp3" autoplay="false" loop="false"></audio>
+
 </header>
 <main class="game__content">
   <div class="game__picture">
-    <div class="game__hearts game__hearts--boss">
+    <div dropzone="true" class="game__hearts game__hearts--boss">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
@@ -16,6 +19,6 @@
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
     </div>
-    <div class="game__cards"></div>
+    <div draggable="true" class="game__cards"></div>
   </div>
 </main>
