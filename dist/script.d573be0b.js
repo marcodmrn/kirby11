@@ -209,7 +209,53 @@ oxo.screens.loadScreen("home", function () {
 
             var boss = document.createElement("div");
             boss.classList.add("game__boss", "game__boss--" + nameBoss[getRandomInt(5)]);
-            divBoss.appendChild(boss);
+            divBoss.appendChild(boss); //Je crée un effet de drag and drop (dropper et css a modifié)
+
+            (function () {
+              var dndHandler = {
+                draggedElement: null,
+                applyDragEvents: function applyDragEvents(element) {
+                  element.game_cards = true;
+                  var dndHandler = this;
+                  element.addEventListener("dragstart", function (e) {
+                    dndHandler.draggedElement = e.target;
+                    e.dataTransfer.setData("text/plain", "");
+                  });
+                },
+                applyDropEvents: function applyDropEvents(dropper) {
+                  dropper.addEventListener("onclick", function (e) {
+                    e.preventDefault();
+                    this.className = "dropper game_cards";
+                  });
+                  dropper.addEventListener("dragleave", function () {
+                    this.className = "game_cards";
+                  });
+                  dropper.addEventListener("drop", function (e) {
+                    var target = e.target;
+                    draggedElement = dndHandler.draggedElement;
+                    clonedElement = draggedElement.cloneNode(true);
+                    target.className = "game_cards";
+                    clonedElement = target.appendChild(clonedEelement);
+                    dndHandler.applyDragEvents(clonedElement);
+                    draggedElement.parentNode.removeChild(draggedElement);
+                    var elements = document.querySelectorAll(".game_cards");
+                    var elementsLen = elements.length;
+
+                    for (var i = 0; i < elementsLen; i++) {
+                      dndHandler.applyDragEvents(elements[i]);
+                    }
+
+                    var droppers = document.querySelectorAll(".game_boss");
+                    var droppersLen = droppers.length;
+
+                    for (var _i = 0; _i < droppersLen; _i++) {
+                      dndHandler.applyDragEvents(droppers[_i]);
+                    }
+                  });
+                }
+              };
+            });
+
             var picBoss = document.querySelector(".game__boss");
             bossCondition("mickey", "piegeSouris");
             bossCondition("snoop", "desintox");
@@ -250,7 +296,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53581" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52806" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
