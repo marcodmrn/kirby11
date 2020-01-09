@@ -177,7 +177,12 @@ body {
   display: flex;
   justify-content: center;
 }
-
+.game__hearts--boss {
+  margin-top: -40px;
+}
+.game__hearts--you {
+  margin-bottom: -30px;
+}
 .game__heart {
   height: 30px;
 }
