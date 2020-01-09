@@ -5,7 +5,22 @@ oxo.screens.loadScreen("home", function() {
   play.addEventListener("click", function() {
     //Je charge le screen "transition"
     oxo.screens.loadScreen("transition", function() {
-      
+      //Je sélectionne mon élément et le place dans une variable
+      let next = document.querySelector(".transition__next");
+      let text1 = document.querySelector(".transition__text--1");
+      let text2 = document.querySelector(".transition__text--2");
+      let counterNext = 0;
+      //J'écoute le click sur mon élément
+      next.addEventListener("click", function() {
+        text1.remove();
+        text2.style.display = "block";
+        counterNext++;
+        if (counterNext === 2) {
+          //Je charge le screen "game"
+          oxo.screens.loadScreen("game", game);
+        }
+      });
+    });
   });
 });
 
