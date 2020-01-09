@@ -26,29 +26,6 @@ oxo.screens.loadScreen("home", function() {
   });
 });
 
-let divCards = document.querySelector(".game__cards");
-let cards = [
-  "cailloux",
-  "communisme",
-  "desintox",
-  "fakenews",
-  "judas",
-  "piegeSouris",
-  "the",
-  "vetement"
-];
-let divBoss = document.querySelector(".game__picture");
-let nameBoss = ["snoop", "mickey", "jesus", "elon", "panda"];
-let selectedCards;
-let card;
-let counterLifeBoss;
-let counterLifeYou;
-let cardsDeck;
-let divHeartBoss;
-let heartBoss;
-let divHeartYou;
-let heartYou;
-
 function game() {
   appearHTP();
   //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
@@ -57,17 +34,19 @@ function game() {
   }
   function bossCondition($boss, $card) {
     if (picBoss.className == "game__boss game__boss--" + $boss) {
-      selectedCards = [];
+      //Je creer une boucle pour générer aléatoirement mes cartes
+
+      let selectedCards = [];
 
       function cardsRandom() {
         for (let i = 0; i < 3; i++) {
-          card = document.createElement("div");
+          var card = document.createElement("div");
           card.classList.add(
             "game__card",
             "game__card--" + cards[getRandomInt(8)]
           );
           if (card.classList.contains("game__card--" + $card)) {
-            card = document.createElement("div");
+            var card = document.createElement("div");
             card.classList.add(
               "game__card",
               "game__card--" + cards[getRandomInt(8)]
@@ -75,7 +54,7 @@ function game() {
           }
           selectedCards.push(card);
         }
-        card = document.createElement("div");
+        var card = document.createElement("div");
         card.classList.add("game__card", "game__card--" + $card);
         selectedCards.push(card);
 
@@ -86,17 +65,19 @@ function game() {
 
       cardsRandom();
 
-      counterLifeBoss = 0;
-      counterLifeYou = 0;
-      cardsDeck = document.querySelectorAll(".game__card");
+      let counterLifeBoss = 0;
+      let counterLifeYou = 0;
+      let cardsDeck = document.querySelectorAll(".game__card");
       cardsDeck.forEach(cardElement => {
         cardElement.addEventListener("click", function() {
-          divHeartBoss = document.querySelector(".game__hearts--boss");
-          heartBoss = document.querySelector(
+          let divHeartBoss = document.querySelector(".game__hearts--boss");
+          let heartBoss = document.querySelector(
             ".game__hearts--boss .game__heart"
           );
-          divHeartYou = document.querySelector(".game__hearts--you");
-          heartYou = document.querySelector(".game__hearts--you .game__heart");
+          let divHeartYou = document.querySelector(".game__hearts--you");
+          let heartYou = document.querySelector(
+            ".game__hearts--you .game__heart"
+          );
           if (cardElement.className == "game__card game__card--" + $card) {
             divHeartBoss.removeChild(heartBoss);
             counterLifeBoss++;
@@ -134,6 +115,19 @@ function game() {
       });
     }
   }
+  let divCards = document.querySelector(".game__cards");
+  let cards = [
+    "cailloux",
+    "communisme",
+    "desintox",
+    "fakenews",
+    "judas",
+    "piegeSouris",
+    "the",
+    "vetement"
+  ];
+  let divBoss = document.querySelector(".game__picture");
+  let nameBoss = ["snoop", "mickey", "jesus", "elon", "panda"];
 
   //Je creer une variable aléatoire pour générer aléatoirement un boss
   function bossRandom() {
