@@ -259,8 +259,9 @@ body {
 }
 
 .game__card {
-  height: 140px;
-  width: 70px;
+  height: 180px;
+  width: 80px;
+  margin-bottom: -70px;
 }
 
 .game__card--cailloux {
@@ -306,6 +307,14 @@ body {
 .game__hearts {
   display: flex;
   justify-content: center;
+}
+
+.game__hearts--boss {
+  margin-top: -40px;
+}
+
+.game__hearts--you {
+  margin-bottom: -30px;
 }
 
 .game__heart {
