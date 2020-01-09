@@ -47,14 +47,12 @@ body {
   height: calc(100% - 200px);
 }
 
-.home__title {
-  font-family: "Righteous", "Sans-serif";
-  font-size: 35px;
-  margin-bottom: 30px;
-}
-
 .home__playIcon {
   height: 100px;
+  margin-top: 150px;
+  margin-left: 95px;
+  margin-right: 50px;
+  width: 50%;
 }
 
 .transition {
@@ -78,6 +76,7 @@ body {
 .transition__next {
   height: 50px;
   margin-top: 60px;
+  margin-left: 230px;
 }
 
 .game {
@@ -216,10 +215,7 @@ body {
   font-size: 50px;
   font-family: "Righteous", "Sans-serif";
 }
-.endLoose__skeleton {
-  margin-top: 100px;
-}
 .endLoose__restart {
   height: 50px;
-  margin-top: 130px;
+  margin-top: 60px;
 }
