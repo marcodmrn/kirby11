@@ -137,7 +137,7 @@ body {
   overflow: hidden; }
 
 .home {
-  background: url(/backgroundHome.bf508fb9.png) no-repeat center;
+  background: url(/backgroundHome.3c138114.jpg) no-repeat center;
   background-size: cover; }
 
 .headerHome,
@@ -170,7 +170,7 @@ body {
   height: 100px; }
 
 .transition {
-  background: url(/backgroundHome.bf508fb9.png) no-repeat center;
+  background: url(/backgroundHome.3c138114.jpg) no-repeat center;
   background-size: cover;
   text-align: center; }
 
@@ -201,8 +201,8 @@ body {
 
 .game__boss {
   margin-top: 50px;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 230px;
   animation: move 4s infinite; }
 
 .game__boss--jesus {
@@ -230,8 +230,9 @@ body {
   justify-content: space-around; }
 
 .game__card {
-  height: 140px;
-  width: 70px; }
+  height: 170px;
+  width: 70px;
+  margin-bottom: -40px; }
 
 .game__card--cailloux {
   background: url(/cailloux.f164df0f.png) no-repeat center;
