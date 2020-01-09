@@ -1,10 +1,11 @@
-<header class="headerGame">
-  <img class="headerGame__icon" src="/info.8b3774be.svg" alt="Bouton parametres">
-  <img class="headerGame__icon" src="/icon-sound.6945a874.svg" alt="Bouton son">
+<header class="header">
+  <img class="header__icon header__icon--info" src="/info.8b3774be.svg" alt="Bouton parametres">
+  <audio src="/audio.990ac290.mp3" autoplay="true" loop="true"></audio><img class="header__icon" src="/icon-sound.6945a874.svg" alt="Bouton son">
+  <audio src="/lvlup.82cc5306.mp3" autoplay="false" loop="false"></audio>
 </header>
 <main class="game__content">
   <div class="game__picture">
-    <div class="game__hearts game__hearts--boss">
+    <div dropzone="true" class="game__hearts game__hearts--boss">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
@@ -19,6 +20,30 @@
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
       <img class="game__heart" src="/life.207d390d.png" alt="Coeur">
     </div>
-    <div class="game__cards"></div>
+    <div draggable="true" class="game__cards"></div>
+  </div>
+  <div class="htp">
+    <div class="htp__content">
+      <div class="htp__close">
+        <img src="/cross.095140ce.svg" alt="Croix">
+      </div>
+      <h1>Comment jouer ?</h1>
+      <img class="htp__boss" src="/snoop.01cb2a1e.png" alt="Snoop Dogg">
+      <div class="htp__cards">
+        <img src="/cardsInfo.e24b750d.png" alt="Info carte">
+      </div>
+      <p>
+        Cliquer sur la bonne carte jusqu’à pour rendre k.o votre adversaire.
+      </p>
+    </div>
+
+    <div class="htp__life">
+      <img src="/life-info.de00b1a8.png" alt="">
+      <p>Jauge de vie</p>
+    </div>
+    <div class="htp__card">
+      <img src="/cardhtp.2d61da65.png" alt="">
+      <p>Carte de combat</p>
+    </div>
   </div>
 </main>

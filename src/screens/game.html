@@ -1,16 +1,11 @@
-<header class="headerGame">
-
+<header class="header">
   <img
-    class="headerGame__icon"
+    class="header__icon header__icon--info"
     src="../assets/info.svg"
     alt="Bouton parametres"
-    />
-   <audio src="../assets/audio.mp3" autoplay="true" loop="true"> 
-   </audio><img
-    class="headerGame__icon"
-    src="../assets/icon-sound.svg"
-    alt="Bouton son"
   />
+  <audio src="../assets/audio.mp3" autoplay="true" loop="true"></audio
+  ><img class="header__icon" src="../assets/icon-sound.svg" alt="Bouton son" />
   <audio src="../assets/lvlup.mp3" autoplay="false" loop="false"></audio>
 </header>
 <main class="game__content">
@@ -31,5 +26,29 @@
       <img class="game__heart" src="../assets/life.png" alt="Coeur" />
     </div>
     <div draggable="true" class="game__cards"></div>
+  </div>
+  <div class="htp">
+    <div class="htp__content">
+      <div class="htp__close">
+        <img src="../assets/cross.svg" alt="Croix" />
+      </div>
+      <h1>Comment jouer ?</h1>
+      <img class="htp__boss" src="../assets/boss/snoop.png" alt="Snoop Dogg" />
+      <div class="htp__cards">
+        <img src="../assets/cardsInfo.png" alt="Info carte" />
+      </div>
+      <p>
+        Cliquer sur la bonne carte jusqu’à pour rendre k.o votre adversaire.
+      </p>
+    </div>
+
+    <div class="htp__life">
+      <img src="../assets/life-info.png" alt="" />
+      <p>Jauge de vie</p>
+    </div>
+    <div class="htp__card">
+      <img src="../assets/cardhtp.png" alt="" />
+      <p>Carte de combat</p>
+    </div>
   </div>
 </main>

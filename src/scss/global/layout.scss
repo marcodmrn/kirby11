@@ -16,6 +16,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-family: "Righteous", "Sans-serif";
 }
 
 .home {
@@ -23,19 +24,13 @@ body {
   background-size: cover;
 }
 
-.headerHome,
-.headerGame,
-.headerEndWin,
-.headerEndLoose {
+.header {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
 }
 
-.headerHome__icon,
-.headerGame__icon,
-.headerEndWin__icon,
-.headerEndLoose__icon {
+.header__icon {
   height: 30px;
 }
 
@@ -234,4 +229,62 @@ body {
 .endLoose__restart {
   height: 50px;
   margin-top: 60px;
+}
+
+.htp {
+  background: url(../assets/backgroundHome.jpg) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+
+  &.is-open {
+    transform: translateY(0);
+  }
+}
+
+.htp__close {
+  text-align: left;
+  img {
+    height: 30px;
+  }
+}
+.htp__content {
+  h1 {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  p {
+    padding: 0 50px;
+    line-height: 20px;
+    font-family: "Righteous", "Sans-serif";
+  }
+}
+.htp__boss {
+  height: 100px;
+  margin-top: 20px;
+}
+.htp__life {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  p {
+    margin-left: 20px;
+  }
+}
+.htp__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  p {
+    margin-left: 20px;
+  }
 }

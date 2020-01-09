@@ -119,13 +119,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"js/script.js":[function(require,module,exports) {
 oxo.screens.loadScreen("home", function () {
-  //Je sélectionne mon élément et le place dans une variable
+  appearHTP(); //Je sélectionne mon élément et le place dans une variable
+
   var play = document.querySelector(".home__playIcon"); //J'écoute le click sur mon élément
 
   play.addEventListener("click", function () {
     //Je charge le screen "transition"
     oxo.screens.loadScreen("transition", function () {
-      //Je sélectionne mon élément et le place dans une variable
+      appearHTP(); //Je sélectionne mon élément et le place dans une variable
+
       var next = document.querySelector(".transition__next");
       var text1 = document.querySelector(".transition__text--1");
       var text2 = document.querySelector(".transition__text--2");
@@ -144,53 +146,76 @@ oxo.screens.loadScreen("home", function () {
     });
   });
 });
+var divCards = document.querySelector(".game__cards");
+var cards = ["cailloux", "communisme", "desintox", "fakenews", "judas", "piegeSouris", "the", "vetement"];
+var divBoss = document.querySelector(".game__picture");
+var nameBoss = ["snoop", "mickey", "jesus", "elon", "panda"];
+var selectedCards;
+var card;
+var counterLifeBoss;
+var counterLifeYou;
+var cardsDeck;
+var divHeartBoss;
+var heartBoss;
+var divHeartYou;
+var heartYou;
 
 function game() {
-  //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
+  appearHTP(); //Fonction pour avoir un nombre aléatoire entre 0 et le max - 1
+
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
   function bossCondition($boss, $card) {
     if (picBoss.className == "game__boss game__boss--" + $boss) {
-      //Je creer une boucle pour générer aléatoirement mes cartes
-      var selectedCards = [];
-
-      for (var i = 0; i < 3; i++) {
-        var card = document.createElement("div");
-        card.classList.add("game__card", "game__card--" + cards[getRandomInt(8)]);
-
-        if (card.classList.contains("game__card--" + $card)) {
-          var card = document.createElement("div");
+      var cardsRandom = function cardsRandom() {
+        for (var i = 0; i < 3; i++) {
+          card = document.createElement("div");
           card.classList.add("game__card", "game__card--" + cards[getRandomInt(8)]);
+
+          if (card.classList.contains("game__card--" + $card)) {
+            card = document.createElement("div");
+            card.classList.add("game__card", "game__card--" + cards[getRandomInt(8)]);
+          }
+
+          selectedCards.push(card);
         }
 
+        card = document.createElement("div");
+        card.classList.add("game__card", "game__card--" + $card);
         selectedCards.push(card);
-      }
+        shuffle(selectedCards).forEach(function (card) {
+          divCards.appendChild(card);
+        });
+      };
 
-      var card = document.createElement("div");
-      card.classList.add("game__card", "game__card--" + $card);
-      selectedCards.push(card);
-      shuffle(selectedCards).forEach(function (card) {
-        divCards.appendChild(card);
-      });
-      var counterLifeBoss = 0;
-      var counterLifeYou = 0;
-      var cardsDeck = document.querySelectorAll(".game__card");
+      selectedCards = [];
+      cardsRandom();
+      counterLifeBoss = 0;
+      counterLifeYou = 0;
+      cardsDeck = document.querySelectorAll(".game__card");
       cardsDeck.forEach(function (cardElement) {
         cardElement.addEventListener("click", function () {
-          var divHeartBoss = document.querySelector(".game__hearts--boss");
-          var heartBoss = document.querySelector(".game__hearts--boss .game__heart");
-          var divHeartYou = document.querySelector(".game__hearts--you");
-          var heartYou = document.querySelector(".game__hearts--you .game__heart");
+          divHeartBoss = document.querySelector(".game__hearts--boss");
+          heartBoss = document.querySelector(".game__hearts--boss .game__heart");
+          divHeartYou = document.querySelector(".game__hearts--you");
+          heartYou = document.querySelector(".game__hearts--you .game__heart");
 
           if (cardElement.className == "game__card game__card--" + $card) {
             divHeartBoss.removeChild(heartBoss);
             counterLifeBoss++;
-            console.log("change boss");
+            cardsDeck.forEach(function (cardElement) {
+              cardElement.remove();
+            });
+            selectedCards = [];
+            cardsRandom();
+            picBoss.remove();
+            bossRandom();
 
             if (counterLifeBoss === 3) {
               oxo.screens.loadScreen("endWin", function () {
+                appearHTP();
                 var retryWin = document.querySelector(".endWin__restart");
                 retryWin.addEventListener("click", function () {
                   window.location.reload();
@@ -203,6 +228,7 @@ function game() {
 
             if (counterLifeYou === 3) {
               oxo.screens.loadScreen("endLoose", function () {
+                appearHTP();
                 var retryLoose = document.querySelector(".endLoose__restart");
                 retryLoose.addEventListener("click", function () {
                   window.location.reload();
@@ -213,16 +239,16 @@ function game() {
         });
       });
     }
+  } //Je creer une variable aléatoire pour générer aléatoirement un boss
+
+
+  function bossRandom() {
+    var boss = document.createElement("div");
+    boss.classList.add("game__boss", "game__boss--" + nameBoss[getRandomInt(5)]);
+    divBoss.appendChild(boss);
   }
 
-  var divCards = document.querySelector(".game__cards");
-  var cards = ["cailloux", "communisme", "desintox", "fakenews", "judas", "piegeSouris", "the", "vetement"];
-  var divBoss = document.querySelector(".game__picture");
-  var nameBoss = ["snoop", "mickey", "jesus", "elon", "panda"]; //Je creer une variable aléatoire pour générer aléatoirement un boss
-
-  var boss = document.createElement("div");
-  boss.classList.add("game__boss", "game__boss--" + nameBoss[getRandomInt(5)]);
-  divBoss.appendChild(boss);
+  bossRandom();
   var picBoss = document.querySelector(".game__boss");
   bossCondition("mickey", "piegeSouris");
   bossCondition("snoop", "desintox");
@@ -241,7 +267,19 @@ function shuffle(a) {
 
   return a;
 }
-},{}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+function appearHTP() {
+  var closeHTP = document.querySelector(".htp__close");
+  var infoHTP = document.querySelector(".header__icon--info");
+  var htp = document.querySelector(".htp");
+  infoHTP.addEventListener("click", function () {
+    htp.classList.add("is-open");
+    closeHTP.addEventListener("click", function () {
+      htp.classList.remove("is-open");
+    });
+  });
+}
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -269,7 +307,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61026" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62391" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -445,5 +483,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel/src/builtins/hmr-runtime.js","js/script.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/script.js"], null)
 //# sourceMappingURL=/script.d573be0b.js.map

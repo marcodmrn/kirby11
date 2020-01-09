@@ -134,24 +134,19 @@ table {
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: "Righteous", "Sans-serif"; }
 
 .home {
   background: url(/backgroundHome.3c138114.jpg) no-repeat center;
   background-size: cover; }
 
-.headerHome,
-.headerGame,
-.headerEndWin,
-.headerEndLoose {
+.header {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px; }
 
-.headerHome__icon,
-.headerGame__icon,
-.headerEndWin__icon,
-.headerEndLoose__icon {
+.header__icon {
   height: 30px; }
 
 .home__content {
@@ -270,6 +265,12 @@ body {
   display: flex;
   justify-content: center; }
 
+.game__hearts--boss {
+  margin-top: -40px; }
+
+.game__hearts--you {
+  margin-bottom: -30px; }
+
 .game__heart {
   height: 30px;
   padding: 2px; }
@@ -288,7 +289,17 @@ body {
   height: calc(100% - 50px); }
 
 .endWin__picture {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  margin-top: -80px; }
+
+.endWin__result {
+  margin-top: -35px;
+  margin-bottom: -10px; }
+
+.endWin__tweet {
+  margin-left: 16px;
+  margin-top: -80px;
+  width: 50px; }
 
 .endWin__restart {
   height: 50px;
@@ -311,6 +322,55 @@ body {
 .endLoose__restart {
   height: 50px;
   margin-top: 60px; }
+
+.htp {
+  background: url(/backgroundHome.3c138114.jpg) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  transform: translateY(-100%);
+  transition: transform 0.5s; }
+  .htp.is-open {
+    transform: translateY(0); }
+
+.htp__close {
+  text-align: left; }
+  .htp__close img {
+    height: 30px; }
+
+.htp__content h1 {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; }
+
+.htp__content p {
+  padding: 0 50px;
+  line-height: 20px;
+  font-family: "Righteous", "Sans-serif"; }
+
+.htp__boss {
+  height: 100px;
+  margin-top: 20px; }
+
+.htp__life {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center; }
+  .htp__life p {
+    margin-left: 20px; }
+
+.htp__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px; }
+  .htp__card p {
+    margin-left: 20px; }
 
 
 /*# sourceMappingURL=/styles.5c8f3eab.css.map */
