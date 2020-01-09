@@ -201,8 +201,8 @@ body {
 
 .game__boss {
   margin-top: 50px;
-  width: 200px;
-  height: 230px;
+  width: 150px;
+  height: 150px;
   animation: move 4s infinite; }
 
 .game__boss--jesus {
@@ -271,7 +271,8 @@ body {
   justify-content: center; }
 
 .game__heart {
-  height: 30px; }
+  height: 30px;
+  padding: 2px; }
 
 .game__infos {
   width: 100%; }
